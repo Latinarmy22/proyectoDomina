@@ -11,3 +11,30 @@ function addOptionsToSelect(selectDelivery){
         select.options[i] = new Option(deliverys[i-1]);
     }
 }
+
+const sendGuide = document.querySelector('.btn-guide');
+sendGuide.addEventListener('click', validateGuide);
+
+function validateGuide(){
+    let form = document.forms['formGuide'];
+    let delivery = form['selectDelivery'].value;
+    let guide = form['numberGuide'].value;
+    //validación de mensajero
+    if (delivery === 'Selecciona un mensajero'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error en las validaciones',
+            text: 'Debes seleccionar un mensajero'
+        })
+    }
+    //validacion de guia
+    if(guide == ''){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error en las validaciones',
+            text: 'Debes ingresar un numero de guia'
+        })
+    }
+
+    saveGuide();
+}

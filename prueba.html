@@ -22,17 +22,17 @@
                     <div class="card-body">
                         <h5 class="card-title">Asignacion mensajero</h5>
                         <div class="form">
-                            <form action="">
+                            <form method="get" id="formGuide">
                                 <div class="input-group mb-3">
                                     <select class="form-select form-control" id="selectDelivery">
                                       <option selected>Selecciona un mensajero</option>
                                     </select>   
                                   </div>
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="numberGuia">Guia</span>
-                                    <input type="text" class="form-control" placeholder="Numero de guia" aria-label="guia" aria-describedby="basic-addon1">
+                                    <span class="input-group-text" id="guia">Guia</span>
+                                    <input type="text" class="form-control" placeholder="Numero de guia" aria-label="guia" aria-describedby="basic-addon1" id="numberGuide" required>
                                 </div>
-                                <a href="#" class="btn btn-primary">Enviar</a>
+                                <a href="#" class="btn btn-primary btn-guide">Enviar</a>
                             </form>
                         </div>
                     </div>
@@ -53,6 +53,11 @@
             </aside>
         </div>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
