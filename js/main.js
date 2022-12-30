@@ -16,25 +16,28 @@ const sendGuide = document.querySelector('.btn-guide');
 sendGuide.addEventListener('click', validateGuide);
 
 function validateGuide(){
-    let form = document.forms['formGuide'];
-    let delivery = form['selectDelivery'].value;
-    let guide = form['numberGuide'].value;
-    //validación de mensajero
-    if (delivery === 'Selecciona un mensajero'){
-        Swal.fire({
-            icon: 'error',
-            title: 'Error en las validaciones',
-            text: 'Debes seleccionar un mensajero'
-        })
+    function assignedGuide(delivery,numberGuide){
+        this.delivery=delivery;
+        this.numberGuide=numberGuide;
     }
-    //validacion de guia
-    if(guide == ''){
+    let delivery = document.getElementById('selectDelivery').value;
+    let guide = document.getElementById('numberGuide').value;
+
+    if (delivery != 'Selecciona un mensajero' && guide != ''){
+        newGuide = new assignedGuide(delivery,guide);
+        console.log(newGuide)
+    }else{
         Swal.fire({
             icon: 'error',
             title: 'Error en las validaciones',
-            text: 'Debes ingresar un numero de guia'
+            text: 'Por favor verifica los datos de entrada'
         })
     }
 
     saveGuide();
+}
+
+function saveGuide(){
+    const guideList = [];
+    guideList.push(newGuide);
 }
