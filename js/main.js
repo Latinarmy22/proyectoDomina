@@ -24,8 +24,27 @@ function validateGuide(){
     let guide = document.getElementById('numberGuide').value;
 
     if (delivery != 'Selecciona un mensajero' && guide != ''){
-        newGuide = new assignedGuide(delivery,guide);
-        console.log(newGuide)
+        Swal.fire({
+            icon: 'question',
+            title: 'Quieres asignar esta guia?',
+            showDenyButton: true,
+            confirmButtonText: 'Guardar',
+            denyButtonText: 'No guardar'
+        }).then((result) => {
+            if (result.isConfirmed){
+                Swal.fire({
+                    icon:'success',
+                    title:'Guia guardada'
+                })
+                newGuide = new assignedGuide(delivery,guide);
+                saveGuide();
+            } else if (result.isDenied){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se guardo la guia'
+                })
+            }
+        })
     }else{
         Swal.fire({
             icon: 'error',
@@ -33,11 +52,10 @@ function validateGuide(){
             text: 'Por favor verifica los datos de entrada'
         })
     }
-
-    saveGuide();
 }
 
 function saveGuide(){
     const guideList = [];
     guideList.push(newGuide);
+    console.log(guideList)
 }
