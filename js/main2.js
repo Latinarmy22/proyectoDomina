@@ -3,7 +3,6 @@ window.addEventListener('load', function() {
     addOptionsToSelect();   
 }); 
 
-// Añade las opciones al Select
 function addOptionsToSelect(selectDelivery){
     const deliverys = ["Daniel Hernandez Agredo", "Sergio Perez" , "Carlos Menchaca", "Luna Uribe"];
     let select = document.getElementById('selectDelivery');
@@ -13,22 +12,18 @@ function addOptionsToSelect(selectDelivery){
     }
 }
 
-//obtiene el formulario
-let form = document.getElementById('formGuide');
-
-//desata el evento 
 const sendGuide = document.querySelector('.btn-guide');
 sendGuide.addEventListener('click', validateGuide);
 
-//valida los datos del formulario y agrega los modales de Sweetalert2
 function validateGuide(){
-    //definimos los campos del formulario
+    function assignedGuide(delivery,numberGuide){
+        this.delivery=delivery;
+        this.numberGuide=numberGuide;
+    }
     let delivery = document.getElementById('selectDelivery').value;
     let guide = document.getElementById('numberGuide').value;
 
-    //valida los campos
     if (delivery != 'Selecciona un mensajero' && guide != ''){
-        //pregunta por guardar la guia y crea el arbol de opciones.
         Swal.fire({
             icon: 'question',
             title: 'Quieres asignar esta guia?',
@@ -41,13 +36,8 @@ function validateGuide(){
                     icon:'success',
                     title:'Guia guardada'
                 })
-                //se crea un form data que contine los datos y los envia a validation.php haciendo uso de fetch.API
-                let data = new FormData(form)
-                fetch('validation.php',{
-                    method: 'POST',
-                    body: data
-                });
-                // crea la ventana despues de denergar el envio
+                newGuide = new assignedGuide(delivery,guide);
+                saveGuide();
             } else if (result.isDenied){
                 Swal.fire({
                     icon: 'error',
@@ -55,7 +45,6 @@ function validateGuide(){
                 })
             }
         })
-        //crea el modal de error en las validaciones
     }else{
         Swal.fire({
             icon: 'error',
@@ -63,4 +52,10 @@ function validateGuide(){
             text: 'Por favor verifica los datos de entrada'
         })
     }
+}
+
+function saveGuide(){
+    const guideList = [];
+    guideList.push(newGuide);
+    console.log(guideList)
 }

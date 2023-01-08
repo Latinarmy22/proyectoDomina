@@ -22,15 +22,15 @@
                     <div class="card-body">
                         <h5 class="card-title">Asignacion mensajero</h5>
                         <div class="form">
-                            <form method="get" id="formGuide">
+                            <form method="get" id="formGuide" action="validate.php">
                                 <div class="input-group mb-3">
-                                    <select class="form-select form-control" id="selectDelivery">
+                                    <select class="form-select form-control" id="selectDelivery" name="selectedDelivery">
                                       <option selected>Selecciona un mensajero</option>
                                     </select>   
                                   </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="guia">Guia</span>
-                                    <input type="text" class="form-control" placeholder="Numero de guia" aria-label="guia" aria-describedby="basic-addon1" id="numberGuide" required>
+                                    <input type="text" class="form-control" placeholder="Numero de guia" aria-label="guia" aria-describedby="basic-addon1" id="numberGuide" name="numberGuide" required>
                                 </div>
                                 <a href="#" class="btn btn-primary btn-guide">Enviar</a>
                             </form>
